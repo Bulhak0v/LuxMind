@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'project',
+    'rest_framework',
+    'api',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -110,7 +112,22 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    # Опціонально: якщо хочеш тільки JSON (як раніше)
+    # 'DEFAULT_RENDERER_CLASSES': ['rest_framework.renderers.JSONRenderer'],
+}
 
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'LuxMind API',
+    'DESCRIPTION': 'Програмна система для розумного управління вуличним освітленням на основі сенсорів. Back-end частина з RESTful API для адміністрування та IoT-клієнтів.',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SWAGGER_UI_SETTINGS': {
+        'deepLinking': True,
+    },
+    'COMPONENT_SPLIT_REQUEST': True,
+}
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
