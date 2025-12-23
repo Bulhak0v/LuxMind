@@ -56,3 +56,17 @@ class BackupSerializer(serializers.ModelSerializer):
         model = Backup
         fields = ['id', 'created_at', 'file_path', 'type', 'description', 'account']
         read_only_fields = ['created_at']
+
+class LoginRequestSerializer(serializers.Serializer):
+    username = serializers.CharField(required=True)
+    password = serializers.CharField(required=True, write_only=True)
+
+class LoginResponseSerializer(serializers.Serializer):
+    token = serializers.CharField()
+    id = serializers.IntegerField()
+    role = serializers.CharField()
+
+class IoTTelemetrySerializer(serializers.Serializer):
+    id = serializers.IntegerField(help_text="ID світильника (Lamp ID)")
+    motion_level = serializers.IntegerField(min_value=0, max_value=100, help_text="Рівень руху 0-100")
+    consumption = serializers.FloatField(min_value=0, help_text="Поточне споживання у Вт")

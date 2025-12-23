@@ -4,7 +4,7 @@ from .views import (
     LoginView, RegisterView, IoTDataReceiveView,
     AccountViewSet, DashboardViewSet, ZoneViewSet,
     LampViewSet, SensorViewSet, SensorDataViewSet,
-    OutageScheduleViewSet, EnergyConsumptionViewSet, BackupViewSet
+    OutageScheduleViewSet, EnergyConsumptionViewSet, BackupViewSet, EnergyAnalyticsView, SystemHealthView
 )
 
 router = DefaultRouter()
@@ -21,6 +21,8 @@ router.register(r'backups', BackupViewSet)
 urlpatterns = [
     path('auth/login/', LoginView.as_view(), name='login'),
     path('auth/register/', RegisterView.as_view(), name='register'),
-    path('iot/data/', IoTDataReceiveView.as_view(), name='iot-data-receive'),
+    path('iot/telemetry/', IoTDataReceiveView.as_view(), name = 'iot-telemetry'),
+    path('analytics/<int:id>/', EnergyAnalyticsView.as_view(), name='energy-analytics'),
+    path('admin/system-health/', SystemHealthView.as_view(), name='system-health'),
     path('', include(router.urls)),
 ]

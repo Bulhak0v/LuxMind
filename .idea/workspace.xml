@@ -4,18 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6680613-9738-42f7-ad69-2899118eb20a" name="Changes" comment="Initial commit. Added models">
+    <list default="true" id="a6680613-9738-42f7-ad69-2899118eb20a" name="Changes" comment="Lab2 final version (API + DB functions)">
+      <change afterPath="$PROJECT_DIR$/api/management/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/management/commands/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/management/commands/fill_db.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/services.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LuxMind/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/LuxMind/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LuxMind/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/LuxMind/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +68,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Mykyta/Documents/AAB/5th_semester/АтаРК/LuxMind/api/management/commands&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -76,6 +78,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Mykyta\Documents\AAB\5th_semester\АтаРК\LuxMind\api\management\commands" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="LuxMind" type="Python.DjangoServer" factoryName="Django server">
       <module name="LuxMind" />
@@ -121,6 +128,8 @@
       <workItem from="1766420381948" duration="4904000" />
       <workItem from="1766431392346" duration="1446000" />
       <workItem from="1766432863691" duration="3033000" />
+      <workItem from="1766489095338" duration="5993000" />
+      <workItem from="1766521923051" duration="2175000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit. Added models">
       <option name="closed" value="true" />
@@ -139,5 +148,21 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit. Added models" />
     <option name="LAST_COMMIT_MESSAGE" value="Initial commit. Added models" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/api/services.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/api/views.py</url>
+          <line>15</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
