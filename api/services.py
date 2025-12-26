@@ -24,7 +24,7 @@ class LightingService:
         return 100 if sensor_value > 50 else base_min
 
     @staticmethod
-    def process_iot_telemetry(id, motion_level, current_consumption): # Змінено lamp_id -> id
+    def process_iot_telemetry(id, motion_level, current_consumption, ambient_light=0):
         lamp = Lamp.objects.get(pk=id)
 
         if LightingService.check_outage_active(lamp.zone_id):
@@ -32,6 +32,12 @@ class LightingService:
             lamp.current_brightness = 0
             lamp.save()
             return {"command": "POWER_OFF", "reason": "Outage active"}
+
+        if ambient_light > 500:
+            lamp.current_brightness = 0
+            lamp.status = 'active'
+            lamp.save()
+            return {"command": "SET_BRIGHTNESS", "value": 0, "reason": "Daylight detected"}
 
         new_brightness = LightingService.calculate_adaptive_brightness(lamp, motion_level)
 
@@ -43,6 +49,7 @@ class LightingService:
 
         lamp.current_brightness = new_brightness
         lamp.save()
+
         return {"command": "SET_BRIGHTNESS", "value": new_brightness}
 
     @staticmethod
@@ -51,7 +58,7 @@ class LightingService:
         actual_total = EnergyConsumption.objects.filter(
             lamp__zone__dashboard_id=id,
             timestamp__gte=start_date
-        ).aggregate(total=Sum('amount_kwh'))['total'] or Decimal('0.0')  # Додайте Decimal тут
+        ).aggregate(total=Sum('amount_kwh'))['total'] or Decimal('0.0')
 
         theoretical_total = actual_total * Decimal('1.45')
 
@@ -80,7 +87,7 @@ class AdminService:
         }
 
     @staticmethod
-    def create_system_backup(id, backup_type='data'):  # Змінено account_id -> id
+    def create_system_backup(id, backup_type='data'):
         data = Lamp.objects.all()
         file_name = f"backup_{backup_type}_{timezone.now().strftime('%Y%m%d')}.json"
 

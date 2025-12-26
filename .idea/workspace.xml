@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6680613-9738-42f7-ad69-2899118eb20a" name="Changes" comment="Lab3 decent version (business logic + basic admin functions)">
+    <list default="true" id="a6680613-9738-42f7-ad69-2899118eb20a" name="Changes" comment="Deployment preparations + tests fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LuxMind/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/LuxMind/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +122,7 @@
       <workItem from="1766489095338" duration="5993000" />
       <workItem from="1766521923051" duration="2546000" />
       <workItem from="1766698986824" duration="1297000" />
-      <workItem from="1766756313149" duration="425000" />
+      <workItem from="1766756313149" duration="5384000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit. Added models">
       <option name="closed" value="true" />
@@ -141,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766524645564</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Deployment preparations + tests fixed">
+      <option name="closed" value="true" />
+      <created>1766757010493</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1766757010493</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,7 +157,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit. Added models" />
     <MESSAGE value="Lab3 decent version (business logic + basic admin functions)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lab3 decent version (business logic + basic admin functions)" />
+    <MESSAGE value="Deployment preparations + tests fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deployment preparations + tests fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
