@@ -70,3 +70,16 @@ class IoTTelemetrySerializer(serializers.Serializer):
     id = serializers.IntegerField(help_text="ID світильника (Lamp ID)")
     motion_level = serializers.IntegerField(min_value=0, max_value=100, help_text="Рівень руху 0-100")
     consumption = serializers.FloatField(min_value=0, help_text="Поточне споживання у Вт")
+
+class EnergyAnalyticsSerializer(serializers.Serializer):
+    actual_kwh = serializers.FloatField()
+    savings_percent = serializers.FloatField()
+
+class SystemHealthSerializer(serializers.Serializer):
+    total_lamps = serializers.IntegerField()
+    faulty_lamps = serializers.IntegerField()
+    active_outages = serializers.IntegerField()
+    total_users = serializers.IntegerField()
+
+class RegisterResponseSerializer(serializers.Serializer):
+    message = serializers.CharField()

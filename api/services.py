@@ -33,7 +33,7 @@ class LightingService:
             lamp.save()
             return {"command": "POWER_OFF", "reason": "Outage active"}
 
-        if ambient_light > 500:
+        if ambient_light > 3800:
             lamp.current_brightness = 0
             lamp.status = 'active'
             lamp.save()

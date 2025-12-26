@@ -32,11 +32,16 @@ class LoginView(APIView):
 
 
 class RegisterView(APIView):
+    @extend_schema(
+        request=AccountSerializer,
+        responses={201: RegisterResponseSerializer},
+        description="Реєстрація нового облікового запису."
+    )
     def post(self, request):
         serializer = AccountSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response({"message": "Account created successfuly"}, status=status.HTTP_201_CREATED)
+            return Response({"message": "Account created successfully"}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -66,6 +71,10 @@ class IoTDataReceiveView(APIView):
 
 
 class EnergyAnalyticsView(APIView):
+    @extend_schema(
+        responses={200: EnergyAnalyticsSerializer},
+        description="Отримання статистики енергоефективності дашборду."
+    )
     def get(self, request, id):
         stats = LightingService.get_energy_savings(id)
         return Response(stats, status=status.HTTP_200_OK)
@@ -165,6 +174,10 @@ class EnergyConsumptionViewSet(viewsets.ModelViewSet):
 
 
 class SystemHealthView(APIView):
+    @extend_schema(
+        responses={200: SystemHealthSerializer},
+        description="Звіт про загальний стан інфраструктури (для адміна)."
+    )
     def get(self, request):
         report = AdminService.get_system_health_report()
         return Response(report, status=status.HTTP_200_OK)
