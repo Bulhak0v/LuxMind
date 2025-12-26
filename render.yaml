@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: luxmind-backend
+    runtime: python
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --no-input
+      python manage.py migrate
+    startCommand: gunicorn LuxMind.wsgi:application
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: luxmind-db
+          property: connectionString
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
