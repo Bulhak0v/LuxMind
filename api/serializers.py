@@ -7,8 +7,11 @@ from .models import (
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = ['id', 'username', 'role', 'email', 'created_at']
+        fields = ['id', 'username', 'password_hash', 'role', 'email', 'created_at', ]
         read_only_fields = ['created_at']
+        extra_kwargs = {
+            'password_hash': {'write_only': True}
+        }
 
 class DashboardSerializer(serializers.ModelSerializer):
     class Meta:
