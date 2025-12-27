@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6680613-9738-42f7-ad69-2899118eb20a" name="Changes" comment="Daylight luminosity fix">
+    <list default="true" id="a6680613-9738-42f7-ad69-2899118eb20a" name="Changes" comment="Registration serializer fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/serializers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +122,7 @@
       <workItem from="1766521923051" duration="2546000" />
       <workItem from="1766698986824" duration="1297000" />
       <workItem from="1766756313149" duration="9673000" />
-      <workItem from="1766795179990" duration="2091000" />
+      <workItem from="1766795179990" duration="5201000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit. Added models">
       <option name="closed" value="true" />
@@ -173,7 +172,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766780338427</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Registration serializer fix">
+      <option name="closed" value="true" />
+      <created>1766802709930</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1766802709930</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,7 +204,8 @@
     <MESSAGE value="Added daylight mode" />
     <MESSAGE value="Minor IoT logic fixes" />
     <MESSAGE value="Daylight luminosity fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Daylight luminosity fix" />
+    <MESSAGE value="Registration serializer fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Registration serializer fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
