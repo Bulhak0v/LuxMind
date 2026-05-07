@@ -79,7 +79,7 @@ class Sensor(models.Model):
 
 
 class SensorData(models.Model):
-    id = models.BigAutoField(primary_key=True)  # Відповідає BIGSERIAL
+    id = models.BigAutoField(primary_key=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     value = models.JSONField()  # Для JSONB
     sensor = models.ForeignKey(Sensor, on_delete=models.CASCADE, related_name='data')

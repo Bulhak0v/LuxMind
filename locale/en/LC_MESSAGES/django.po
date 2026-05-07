@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: .\templates\auth.html:8
 msgid "LuxMind - Управління освітленням"
 msgstr "LuxMind - Lighting Management"
@@ -57,7 +58,7 @@ msgstr "Email"
 msgid "Роль"
 msgstr "Role"
 
-#: .\templates\auth.html:77
+#: .\templates\auth.html:77 .\templates\operator.html:21
 msgid "Оператор"
 msgstr "Operator"
 
@@ -72,3 +73,91 @@ msgstr "Create Account"
 #: .\templates\auth.html:84
 msgid "Вже є акаунт? Увійти"
 msgstr "Already have an account? Sign in"
+
+# ==========================================
+# НОВІ РЯДКИ ЗІ СТОРІНКИ ОПЕРАТОРА (operator.html)
+# ==========================================
+
+msgid "Панель Оператора - LuxMind"
+msgstr "Operator Panel - LuxMind"
+
+msgid "Вийти"
+msgstr "Logout"
+
+msgid "Управління"
+msgstr "Management"
+
+msgid "Дашборд"
+msgstr "Dashboard"
+
+msgid "Завантаження..."
+msgstr "Loading..."
+
+msgid "Зона"
+msgstr "Zone"
+
+msgid "Оберіть дашборд"
+msgstr "Select dashboard"
+
+msgid "Активні відключення"
+msgstr "Active Outages"
+
+msgid "Оберіть зону"
+msgstr "Select zone"
+
+msgid "Світильники в зоні"
+msgstr "Lamps in zone"
+
+msgid "Оберіть зону ліворуч для відображення світильників."
+msgstr "Select a zone on the left to display lamps."
+
+msgid "Сенсори світильника"
+msgstr "Lamp Sensors"
+
+msgid "Дашборди відсутні"
+msgstr "No dashboards available"
+
+msgid "Немає світильників у цій зоні."
+msgstr "No lamps in this zone."
+
+msgid "Яскравість"
+msgstr "Brightness"
+
+msgid "Статус"
+msgstr "Status"
+
+msgid "Датчики"
+msgstr "Sensors"
+
+msgid "Немає активних відключень"
+msgstr "No active outages"
+
+msgid "Зона ID"
+msgstr "Zone ID"
+
+msgid "Відключення"
+msgstr "Outage"
+
+msgid "Датчики відсутні."
+msgstr "No sensors found."
+
+msgid "Помилка завантаження."
+msgstr "Loading error."
+
+msgid "Всі"
+msgstr "All"
+
+msgid "Активні"
+msgstr "Active"
+
+msgid "Зламані"
+msgstr "Faulty"
+
+msgid "Зберегти"
+msgstr "Save"
+
+msgid "Яскравість успішно оновлено!"
+msgstr "Brightness updated successfully!"
+
+msgid "Помилка оновлення."
+msgstr "Update error."

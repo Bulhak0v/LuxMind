@@ -1,0 +1,145 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Панель Оператора - LuxMind" %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <style>
+        body { background-color: #f8f9fa; }
+        .lamp-card { transition: transform 0.2s; }
+        .lamp-card:hover { transform: scale(1.02); }
+        .status-active { color: #198754; font-weight: bold; }
+        .status-inactive { color: #6c757d; font-weight: bold; }
+        .status-faulty { color: #dc3545; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">LuxMind {% trans "Оператор" %}</a>
+        <div class="d-flex">
+            <span class="navbar-text me-3" id="user-greeting"></span>
+
+            {% get_current_language as CURRENT_LANGUAGE %}
+            <form action="{% url 'set_language' %}" method="post" class="me-3">
+                {% csrf_token %}
+                <input name="next" type="hidden" value="/operator-app/">
+                <select name="language" class="form-select form-select-sm" onchange="this.form.submit()">
+                    <option value="uk" {% if CURRENT_LANGUAGE == 'uk' %}selected{% endif %}>УКР</option>
+                    <option value="en" {% if CURRENT_LANGUAGE == 'en' %}selected{% endif %}>ENG</option>
+                </select>
+            </form>
+
+            <button class="btn btn-outline-light btn-sm" id="logout-btn">{% trans "Вийти" %}</button>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-3 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">{% trans "Управління" %}</h5>
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Дашборд" %}</label>
+                        <select id="dashboard-select" class="form-select">
+                            <option value="">{% trans "Завантаження..." %}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Зона" %}</label>
+                        <select id="zone-select" class="form-select" disabled>
+                            <option value="">{% trans "Оберіть дашборд" %}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mt-3">
+                <div class="card-header bg-warning text-dark fw-bold">
+                    {% trans "Активні відключення" %}
+                </div>
+                <div class="card-body" id="outages-container">
+                    <p class="text-muted small">{% trans "Оберіть зону" %}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4>{% trans "Світильники в зоні" %}</h4>
+
+                <!-- НОВЕ: Фільтри -->
+                <div class="btn-group btn-group-sm" role="group" id="lamp-filters">
+                    <button type="button" class="btn btn-outline-primary active" data-filter="all">{% trans "Всі" %}</button>
+                    <button type="button" class="btn btn-outline-success" data-filter="active">{% trans "Активні" %}</button>
+                    <button type="button" class="btn btn-outline-danger" data-filter="faulty">{% trans "Зламані" %}</button>
+                </div>
+            </div>
+
+            <div class="row" id="lamps-container">
+                <div class="col-12">
+                    <div class="alert alert-info">
+                        {% trans "Оберіть зону ліворуч для відображення світильників." %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="sensorModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{% trans "Сенсори світильника" %} <span id="modal-lamp-id"></span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="sensors-container">
+                {% trans "Завантаження..." %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header text-white" id="toast-header">
+      <strong class="me-auto" id="toast-title">LuxMind</strong>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body" id="toast-body"></div>
+  </div>
+</div>
+
+<script>
+    window.I18N = {
+        selectDashboard: "{% trans 'Оберіть дашборд' %}",
+        noDashboards: "{% trans 'Дашборди відсутні' %}",
+        selectZone: "{% trans 'Оберіть зону' %}",
+        selectZoneLeft: "{% trans 'Оберіть зону ліворуч' %}",
+        noLamps: "{% trans 'Немає світильників у цій зоні.' %}",
+        brightness: "{% trans 'Яскравість' %}",
+        status: "{% trans 'Статус' %}",
+        sensorsBtn: "{% trans 'Датчики' %}",
+        noOutages: "{% trans 'Немає активних відключень' %}",
+        zoneId: "{% trans 'Зона ID' %}",
+        outageDesc: "{% trans 'Відключення' %}",
+        noSensors: "{% trans 'Датчики відсутні.' %}",
+        loadError: "{% trans 'Помилка завантаження.' %}",
+        saveBtn: "{% trans 'Зберегти' %}",
+        updateSuccess: "{% trans 'Яскравість успішно оновлено!' %}",
+        updateError: "{% trans 'Помилка оновлення.' %}"
+    };
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'js/operator.js' %}"></script>
+</body>
+</html>
