@@ -2,7 +2,7 @@ import json
 from django.core import serializers
 from django.utils import timezone
 from django.db.models import Sum, F
-from .models import Lamp, OutageSchedule, EnergyConsumption, SensorData, Zone, Account, Backup
+from .models import Lamp, OutageSchedule, EnergyConsumption, SensorData, Zone, Account, Backup, Dashboard
 from decimal import Decimal
 
 
@@ -77,6 +77,8 @@ class AdminService:
     @staticmethod
     def get_system_health_report():
         return {
+            "total_dashboards": Dashboard.objects.count(),
+            "total_zones": Zone.objects.count(),
             "total_lamps": Lamp.objects.count(),
             "faulty_lamps": Lamp.objects.filter(status='faulty').count(),
             "active_outages": OutageSchedule.objects.filter(

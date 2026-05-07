@@ -12,8 +12,9 @@ urlpatterns = [
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
-    # Фронтенд (Auth SPA, Operator SPA)
+    # Фронтенд (Auth SPA, Operator SPA, Admin SPA)
     path('', TemplateView.as_view(template_name='auth.html'), name='auth_page'),
     path('operator-app/', TemplateView.as_view(template_name='operator.html'), name='operator_page'),
+    path('admin-app/', TemplateView.as_view(template_name='admin.html'), name='admin_page'),
     path('i18n/', include('django.conf.urls.i18n')),
 ]

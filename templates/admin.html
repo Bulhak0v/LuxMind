@@ -1,0 +1,146 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Панель Адміністратора - LuxMind" %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <style>
+        body { background-color: #f4f7f6; }
+        .stat-card { transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; }
+        .stat-card:hover { transform: translateY(-5px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">LuxMind {% trans "Адмін" %}</a>
+        <div class="d-flex">
+            <span class="navbar-text me-3 text-light" id="user-greeting"></span>
+            {% get_current_language as CURRENT_LANGUAGE %}
+            <form action="{% url 'set_language' %}" method="post" class="me-3">
+                {% csrf_token %}
+                <input name="next" type="hidden" value="/admin-app/">
+                <select name="language" class="form-select form-select-sm" onchange="this.form.submit()">
+                    <option value="uk" {% if CURRENT_LANGUAGE == 'uk' %}selected{% endif %}>УКР</option>
+                    <option value="en" {% if CURRENT_LANGUAGE == 'en' %}selected{% endif %}>ENG</option>
+                </select>
+            </form>
+            <button class="btn btn-outline-light btn-sm" id="logout-btn">{% trans "Вийти" %}</button>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <ul class="nav nav-tabs" id="adminTabs" role="tablist">
+        <li class="nav-item"><button class="nav-link active" id="health-tab" data-bs-toggle="tab" data-bs-target="#health" type="button">{% trans "Стан системи" %}</button></li>
+        <li class="nav-item"><button class="nav-link" id="users-tab" data-bs-toggle="tab" data-bs-target="#users" type="button">{% trans "Користувачі" %}</button></li>
+        <li class="nav-item"><button class="nav-link" id="outages-tab" data-bs-toggle="tab" data-bs-target="#outages" type="button">{% trans "Відключення" %}</button></li>
+        <li class="nav-item"><button class="nav-link" id="backups-tab" data-bs-toggle="tab" data-bs-target="#backups" type="button">{% trans "Резервні копії" %}</button></li>
+    </ul>
+
+    <div class="tab-content bg-white p-4 border border-top-0 shadow-sm" id="adminTabsContent">
+
+        <div class="tab-pane fade show active" id="health">
+            <h4 class="mb-4 text-muted"><small>{% trans "Натисніть на картку для деталей" %}</small></h4>
+            <div class="row" id="health-container">
+                <div class="col-12"><div class="spinner-border text-danger"></div></div>
+            </div>
+            <div class="mt-4"><a href="/admin/" target="_blank" class="btn btn-outline-danger">{% trans "Відкрити розширену Django-адмінку" %}</a></div>
+        </div>
+
+        <div class="tab-pane fade" id="users">
+            <div class="d-flex justify-content-between mb-3">
+                <h4>{% trans "Управління користувачами" %}</h4>
+                <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#addUserModal">{% trans "+ Додати користувача" %}</button>
+            </div>
+            <div class="table-responsive"><table class="table table-hover"><thead class="table-light"><tr><th>ID</th><th>{% trans "Ім'я користувача" %}</th><th>Email</th><th>{% trans "Роль" %}</th><th>{% trans "Дії" %}</th></tr></thead><tbody id="users-table-body"></tbody></table></div>
+        </div>
+
+        <div class="tab-pane fade" id="outages">
+            <div class="d-flex justify-content-between mb-3">
+                <h4>{% trans "Графіки відключень" %}</h4>
+                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#addOutageModal" onclick="loadZonesForOutages()">{% trans "+ Створити графік" %}</button>
+            </div>
+            <div class="table-responsive"><table class="table table-hover"><thead class="table-light"><tr><th>ID</th><th>{% trans "Зона" %}</th><th>{% trans "Початок" %}</th><th>{% trans "Кінець" %}</th><th>{% trans "Опис" %}</th><th>{% trans "Дії" %}</th></tr></thead><tbody id="outages-table-body"></tbody></table></div>
+        </div>
+
+        <div class="tab-pane fade" id="backups">
+            <div class="d-flex justify-content-between mb-3">
+                <h4>{% trans "Експорт / Імпорт / Бекапи" %}</h4>
+                <div>
+                    <button class="btn btn-primary btn-sm me-2" onclick="createBackup('data')">{% trans "Бекап Даних" %}</button>
+                    <button class="btn btn-secondary btn-sm me-2" onclick="createBackup('config')">{% trans "Бекап Налаштувань" %}</button>
+                    <button class="btn btn-warning btn-sm" onclick="document.getElementById('import-file').click()">{% trans "Імпорт з файлу" %}</button>
+                    <input type="file" id="import-file" class="d-none" onchange="simulateImport(this)">
+                </div>
+            </div>
+            <div class="table-responsive"><table class="table table-sm"><thead class="table-light"><tr><th>ID</th><th>{% trans "Дата" %}</th><th>{% trans "Тип" %}</th><th>{% trans "Опис" %}</th><th>{% trans "Шлях" %}</th></tr></thead><tbody id="backups-table-body"></tbody></table></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="dataDetailsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="dataDetailsTitle">{% trans "Деталі" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm"><thead class="table-light" id="details-thead"></thead><tbody id="details-tbody"></tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addOutageModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{% trans "Нове відключення" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="add-outage-form">
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Зона" %}</label>
+                        <select id="outage-zone" class="form-select" required><option value="">{% trans "Завантаження..." %}</option></select>
+                    </div>
+                    <div class="mb-3"><label class="form-label">{% trans "Початок" %}</label><input type="datetime-local" id="outage-start" class="form-control" required></div>
+                    <div class="mb-3"><label class="form-label">{% trans "Кінець" %}</label><input type="datetime-local" id="outage-end" class="form-control" required></div>
+                    <div class="mb-3"><label class="form-label">{% trans "Опис" %}</label><input type="text" id="outage-desc" class="form-control"></div>
+                    <button type="submit" class="btn btn-warning w-100">{% trans "Зберегти" %}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addUserModal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">{% trans "Новий користувач" %}</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><form id="add-user-form"><div class="mb-3"><label class="form-label">{% trans "Логін" %}</label><input type="text" id="new-username" class="form-control" required></div><div class="mb-3"><label class="form-label">Email</label><input type="email" id="new-email" class="form-control" required></div><div class="mb-3"><label class="form-label">{% trans "Пароль" %}</label><input type="password" id="new-password" class="form-control" required></div><div class="mb-3"><label class="form-label">{% trans "Роль" %}</label><select id="new-role" class="form-select"><option value="operator">{% trans "Оператор" %}</option><option value="admin">{% trans "Адміністратор" %}</option></select></div><button type="submit" class="btn btn-success w-100">{% trans "Створити" %}</button></form></div></div></div></div>
+<div class="toast-container position-fixed bottom-0 end-0 p-3"><div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header text-white" id="toast-header"><strong class="me-auto">LuxMind Admin</strong><button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button></div><div class="toast-body" id="toast-body"></div></div></div>
+
+<script>
+    window.I18N = {
+        totalLamps: "{% trans 'Всього світильників' %}",
+        faultyLamps: "{% trans 'Зламані світильники' %}",
+        activeOutages: "{% trans 'Активні відключення' %}",
+        totalUsers: "{% trans 'Всього користувачів' %}",
+        totalDashboards: "{% trans 'Дашборди' %}",
+        totalZones: "{% trans 'Зони' %}",
+        deleteBtn: "{% trans 'Видалити' %}",
+        successDel: "{% trans 'Успішно видалено' %}",
+        successAdd: "{% trans 'Успішно створено' %}",
+        errorGeneric: "{% trans 'Сталася помилка' %}"
+    };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'js/admin.js' %}"></script>
+</body>
+</html>

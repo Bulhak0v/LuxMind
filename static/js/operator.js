@@ -103,7 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const statusClass = `status-${lamp.status}`;
             const isFaulty = lamp.status === 'faulty';
 
-            // Інтерактивний повзунок яскравості
             const card = `
                 <div class="col-md-6 col-lg-4 mb-3">
                     <div class="card lamp-card shadow-sm border-0 ${isFaulty ? 'border-danger border-2' : ''}">
@@ -137,7 +136,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll('#lamp-filters button').forEach(btn => {
         btn.addEventListener('click', (e) => {
-            // Зміна активної кнопки
             document.querySelectorAll('#lamp-filters button').forEach(b => b.classList.remove('active'));
             e.target.classList.add('active');
 

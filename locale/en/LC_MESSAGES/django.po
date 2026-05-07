@@ -161,3 +161,126 @@ msgstr "Brightness updated successfully!"
 
 msgid "Помилка оновлення."
 msgstr "Update error."
+
+msgid "Панель Адміністратора - LuxMind"
+msgstr "Admin Panel - LuxMind"
+
+msgid "Адмін"
+msgstr "Admin"
+
+msgid "Стан системи"
+msgstr "System Health"
+
+msgid "Користувачі"
+msgstr "Users"
+
+msgid "Резервні копії"
+msgstr "Backups"
+
+msgid "Глобальна статистика"
+msgstr "Global Statistics"
+
+msgid "Відкрити розширену Django-адмінку"
+msgstr "Open Advanced Django Admin"
+
+msgid "Управління користувачами"
+msgstr "User Management"
+
+msgid "+ Додати користувача"
+msgstr "+ Add User"
+
+msgid "Дії"
+msgstr "Actions"
+
+msgid "Експорт / Імпорт / Бекапи"
+msgstr "Export / Import / Backups"
+
+msgid "Бекап Даних"
+msgstr "Data Backup"
+
+msgid "Бекап Налаштувань"
+msgstr "Config Backup"
+
+msgid "Імпорт з файлу"
+msgstr "Import from file"
+
+msgid "Дата"
+msgstr "Date"
+
+msgid "Тип"
+msgstr "Type"
+
+msgid "Опис"
+msgstr "Description"
+
+msgid "Шлях"
+msgstr "Path"
+
+msgid "Новий користувач"
+msgstr "New User"
+
+msgid "Логін"
+msgstr "Login"
+
+msgid "Створити"
+msgstr "Create"
+
+msgid "Всього світильників"
+msgstr "Total Lamps"
+
+msgid "Зламані світильники"
+msgstr "Faulty Lamps"
+
+msgid "Всього користувачів"
+msgstr "Total Users"
+
+msgid "Видалити"
+msgstr "Delete"
+
+msgid "Користувача видалено"
+msgstr "User deleted"
+
+msgid "Користувача створено"
+msgstr "User created"
+
+msgid "Бекап успішно створено"
+msgstr "Backup successfully created"
+
+msgid "Налаштування успішно імпортовано з файлу!"
+msgstr "Settings successfully imported from file!"
+
+msgid "Сталася помилка"
+msgstr "An error occurred"
+
+msgid "Натисніть на картку для деталей"
+msgstr "Click on a card for details"
+
+msgid "Графіки відключень"
+msgstr "Outage Schedules"
+
+msgid "+ Створити графік"
+msgstr "+ Create Schedule"
+
+msgid "Початок"
+msgstr "Start Time"
+
+msgid "Кінець"
+msgstr "End Time"
+
+msgid "Деталі"
+msgstr "Details"
+
+msgid "Нове відключення"
+msgstr "New Outage"
+
+msgid "Успішно видалено"
+msgstr "Successfully deleted"
+
+msgid "Успішно створено"
+msgstr "Successfully created"
+
+msgid "Дашборди"
+msgstr "Dashboards"
+
+msgid "Зони"
+msgstr "Zones"
