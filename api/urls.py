@@ -1,4 +1,5 @@
 from django.urls import path, include
+from django.shortcuts import redirect
 from rest_framework.routers import DefaultRouter
 from .views import (
     LoginView, RegisterView, IoTDataReceiveView,
@@ -19,10 +20,11 @@ router.register(r'energy-consumption', EnergyConsumptionViewSet)
 router.register(r'backups', BackupViewSet)
 
 urlpatterns = [
-    path('auth/login/', LoginView.as_view(), name='login'),
-    path('auth/register/', RegisterView.as_view(), name='register'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('register/', RegisterView.as_view(), name='register'),
     path('iot/telemetry/', IoTDataReceiveView.as_view(), name = 'iot-telemetry'),
     path('analytics/<int:id>/', EnergyAnalyticsView.as_view(), name='energy-analytics'),
     path('admin/system-health/', SystemHealthView.as_view(), name='system-health'),
     path('', include(router.urls)),
+    path('i18n/', include('django.conf.urls.i18n')),
 ]

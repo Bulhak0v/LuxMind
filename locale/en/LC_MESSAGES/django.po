@@ -1,0 +1,74 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-06 22:14+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: .\templates\auth.html:8
+msgid "LuxMind - Управління освітленням"
+msgstr "LuxMind - Lighting Management"
+
+#: .\templates\auth.html:24
+msgid "Розумне вуличне освітлення"
+msgstr "Smart Street Lighting"
+
+#: .\templates\auth.html:39
+msgid "Вхід в систему"
+msgstr "Login"
+
+#: .\templates\auth.html:43 .\templates\auth.html:63
+msgid "Ім'я користувача"
+msgstr "Username"
+
+#: .\templates\auth.html:47 .\templates\auth.html:71
+msgid "Пароль"
+msgstr "Password"
+
+#: .\templates\auth.html:50
+msgid "Увійти"
+msgstr "Sign In"
+
+#: .\templates\auth.html:53
+msgid "Немає акаунту? Зареєструватися"
+msgstr "Don't have an account? Sign up"
+
+#: .\templates\auth.html:59
+msgid "Реєстрація"
+msgstr "Registration"
+
+#: .\templates\auth.html:67
+msgid "Email"
+msgstr "Email"
+
+#: .\templates\auth.html:75
+msgid "Роль"
+msgstr "Role"
+
+#: .\templates\auth.html:77
+msgid "Оператор"
+msgstr "Operator"
+
+#: .\templates\auth.html:78
+msgid "Адміністратор"
+msgstr "Administrator"
+
+#: .\templates\auth.html:81
+msgid "Створити акаунт"
+msgstr "Create Account"
+
+#: .\templates\auth.html:84
+msgid "Вже є акаунт? Увійти"
+msgstr "Already have an account? Sign in"
