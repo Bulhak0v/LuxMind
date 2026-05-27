@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     'Content-Type': 'application/json',
                     'X-CSRFToken': csrfToken
                 },
-                body: JSON.stringify({ username, password })
+                body: JSON.stringify({username, password})
             });
 
             const data = await response.json();

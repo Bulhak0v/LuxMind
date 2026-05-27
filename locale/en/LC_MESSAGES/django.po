@@ -74,10 +74,6 @@ msgstr "Create Account"
 msgid "Вже є акаунт? Увійти"
 msgstr "Already have an account? Sign in"
 
-# ==========================================
-# НОВІ РЯДКИ ЗІ СТОРІНКИ ОПЕРАТОРА (operator.html)
-# ==========================================
-
 msgid "Панель Оператора - LuxMind"
 msgstr "Operator Panel - LuxMind"
 

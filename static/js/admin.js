@@ -15,7 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = '/';
     });
 
-    function getResults(data) { return data.results !== undefined ? data.results : data; }
+    function getResults(data) {
+        return data.results !== undefined ? data.results : data;
+    }
 
     function showToast(message, isSuccess = true) {
         const toastEl = document.getElementById('liveToast');
@@ -50,10 +52,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div></div></div>
             `;
             document.getElementById('health-container').innerHTML = html;
-        } catch (error) { console.error(error); }
+        } catch (error) {
+            console.error(error);
+        }
     }
 
-    window.viewDetails = async function(type) {
+    window.viewDetails = async function (type) {
         const titleEl = document.getElementById('dataDetailsTitle');
         const thead = document.getElementById('details-thead');
         const tbody = document.getElementById('details-tbody');
@@ -67,27 +71,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 thead.innerHTML = '<tr><th>ID</th><th>Назва</th><th>Акаунт ID</th></tr>';
                 data = getResults(await (await fetch('/api/v1/dashboards/')).json());
                 tbody.innerHTML = data.map(i => `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.account}</td></tr>`).join('');
-            }
-            else if (type === 'zones') {
+            } else if (type === 'zones') {
                 titleEl.textContent = window.I18N.totalZones;
                 thead.innerHTML = '<tr><th>ID</th><th>Назва</th><th>Тип</th></tr>';
                 data = getResults(await (await fetch('/api/v1/zones/')).json());
                 tbody.innerHTML = data.map(i => `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.type}</td></tr>`).join('');
-            }
-            else if (type === 'lamps' || type === 'faulty_lamps') {
+            } else if (type === 'lamps' || type === 'faulty_lamps') {
                 titleEl.textContent = type === 'lamps' ? window.I18N.totalLamps : window.I18N.faultyLamps;
                 thead.innerHTML = '<tr><th>SN</th><th>Зона</th><th>Яскравість</th><th>Статус</th></tr>';
                 data = getResults(await (await fetch('/api/v1/lamps/')).json());
                 if (type === 'faulty_lamps') data = data.filter(l => l.status === 'faulty');
-                tbody.innerHTML = data.map(i => `<tr><td>${i.serial_number}</td><td>${i.zone}</td><td>${i.current_brightness}%</td><td><span class="badge ${i.status==='faulty'?'bg-danger':'bg-success'}">${i.status}</span></td></tr>`).join('');
-            }
-            else if (type === 'outages') {
+                tbody.innerHTML = data.map(i => `<tr><td>${i.serial_number}</td><td>${i.zone}</td><td>${i.current_brightness}%</td><td><span class="badge ${i.status === 'faulty' ? 'bg-danger' : 'bg-success'}">${i.status}</span></td></tr>`).join('');
+            } else if (type === 'outages') {
                 titleEl.textContent = window.I18N.activeOutages;
                 thead.innerHTML = '<tr><th>Зона ID</th><th>Початок</th><th>Кінець</th></tr>';
                 data = getResults(await (await fetch('/api/v1/outage-schedules/?active=true')).json());
                 tbody.innerHTML = data.map(i => `<tr><td>${i.zone}</td><td>${new Date(i.start_time).toLocaleString()}</td><td>${new Date(i.end_time).toLocaleString()}</td></tr>`).join('');
-            }
-            else if (type === 'users') {
+            } else if (type === 'users') {
                 titleEl.textContent = window.I18N.totalUsers;
                 thead.innerHTML = '<tr><th>ID</th><th>Логін</th><th>Роль</th></tr>';
                 data = getResults(await (await fetch('/api/v1/accounts/')).json());
@@ -95,7 +95,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             if (data.length === 0) tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted">Дані відсутні</td></tr>';
-        } catch (error) { tbody.innerHTML = '<tr><td colspan="5" class="text-danger">Помилка завантаження</td></tr>'; }
+        } catch (error) {
+            tbody.innerHTML = '<tr><td colspan="5" class="text-danger">Помилка завантаження</td></tr>';
+        }
     }
 
     async function loadOutagesAdmin() {
@@ -114,16 +116,20 @@ document.addEventListener("DOMContentLoaded", () => {
                         <td><button class="btn btn-sm btn-outline-danger" onclick="deleteOutage(${o.id})">${window.I18N.deleteBtn}</button></td>
                     </tr>`;
             });
-        } catch (error) { console.error(error); }
+        } catch (error) {
+            console.error(error);
+        }
     }
 
-    window.loadZonesForOutages = async function() {
+    window.loadZonesForOutages = async function () {
         const select = document.getElementById('outage-zone');
         select.innerHTML = '<option value="">Завантаження...</option>';
         try {
             const data = getResults(await (await fetch('/api/v1/zones/')).json());
             select.innerHTML = data.map(z => `<option value="${z.id}">${z.name} (ID: ${z.id})</option>`).join('');
-        } catch (error) { select.innerHTML = '<option value="">Помилка</option>'; }
+        } catch (error) {
+            select.innerHTML = '<option value="">Помилка</option>';
+        }
     }
 
     document.getElementById('add-outage-form').addEventListener('submit', async (e) => {
@@ -137,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             const response = await fetch('/api/v1/outage-schedules/', {
-                method: 'POST', headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrfToken },
+                method: 'POST', headers: {'Content-Type': 'application/json', 'X-CSRFToken': csrfToken},
                 body: JSON.stringify(payload)
             });
             if (response.ok) {
@@ -146,53 +152,93 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.getElementById('add-outage-form').reset();
                 loadOutagesAdmin();
                 loadSystemHealth(); // Оновити лічильник на головній
-            } else { showToast(window.I18N.errorGeneric, false); }
-        } catch (error) { showToast(window.I18N.errorGeneric, false); }
+            } else {
+                showToast(window.I18N.errorGeneric, false);
+            }
+        } catch (error) {
+            showToast(window.I18N.errorGeneric, false);
+        }
     });
 
-    window.deleteOutage = async function(id) {
+    window.deleteOutage = async function (id) {
         if (!confirm("Видалити графік відключення?")) return;
         try {
-            const response = await fetch(`/api/v1/outage-schedules/${id}/`, { method: 'DELETE', headers: { 'X-CSRFToken': csrfToken }});
-            if (response.ok) { showToast(window.I18N.successDel); loadOutagesAdmin(); loadSystemHealth(); }
-        } catch (error) { showToast(window.I18N.errorGeneric, false); }
+            const response = await fetch(`/api/v1/outage-schedules/${id}/`, {
+                method: 'DELETE',
+                headers: {'X-CSRFToken': csrfToken}
+            });
+            if (response.ok) {
+                showToast(window.I18N.successDel);
+                loadOutagesAdmin();
+                loadSystemHealth();
+            }
+        } catch (error) {
+            showToast(window.I18N.errorGeneric, false);
+        }
     }
 
     async function loadUsers() {
         try {
             const users = getResults(await (await fetch('/api/v1/accounts/')).json());
             const tbody = document.getElementById('users-table-body');
-            tbody.innerHTML = users.map(u => `<tr><td>${u.id}</td><td>${u.username}</td><td>${u.email||'-'}</td><td><span class="badge ${u.role==='admin'?'bg-danger':'bg-primary'}">${u.role}</span></td><td><button class="btn btn-sm btn-outline-danger" onclick="deleteUser(${u.id})" ${u.id==userId?'disabled':''}>${window.I18N.deleteBtn}</button></td></tr>`).join('');
-        } catch(e){}
+            tbody.innerHTML = users.map(u => `<tr><td>${u.id}</td><td>${u.username}</td><td>${u.email || '-'}</td><td><span class="badge ${u.role === 'admin' ? 'bg-danger' : 'bg-primary'}">${u.role}</span></td><td><button class="btn btn-sm btn-outline-danger" onclick="deleteUser(${u.id})" ${u.id == userId ? 'disabled' : ''}>${window.I18N.deleteBtn}</button></td></tr>`).join('');
+        } catch (e) {
+        }
     }
-    window.deleteUser = async function(id) {
+
+    window.deleteUser = async function (id) {
         if (!confirm("Дійсно видалити?")) return;
-        const res = await fetch(`/api/v1/accounts/${id}/`, { method: 'DELETE', headers: { 'X-CSRFToken': csrfToken }});
-        if (res.ok) { showToast(window.I18N.successDel); loadUsers(); loadSystemHealth(); }
+        const res = await fetch(`/api/v1/accounts/${id}/`, {method: 'DELETE', headers: {'X-CSRFToken': csrfToken}});
+        if (res.ok) {
+            showToast(window.I18N.successDel);
+            loadUsers();
+            loadSystemHealth();
+        }
     }
     document.getElementById('add-user-form').addEventListener('submit', async (e) => {
         e.preventDefault();
         const res = await fetch('/api/v1/register/', {
-            method: 'POST', headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrfToken },
+            method: 'POST', headers: {'Content-Type': 'application/json', 'X-CSRFToken': csrfToken},
             body: JSON.stringify({
-                username: document.getElementById('new-username').value, email: document.getElementById('new-email').value,
-                password_hash: document.getElementById('new-password').value, role: document.getElementById('new-role').value
+                username: document.getElementById('new-username').value,
+                email: document.getElementById('new-email').value,
+                password_hash: document.getElementById('new-password').value,
+                role: document.getElementById('new-role').value
             })
         });
-        if (res.ok) { showToast(window.I18N.successAdd); bootstrap.Modal.getInstance(document.getElementById('addUserModal')).hide(); loadUsers(); loadSystemHealth(); }
+        if (res.ok) {
+            showToast(window.I18N.successAdd);
+            bootstrap.Modal.getInstance(document.getElementById('addUserModal')).hide();
+            loadUsers();
+            loadSystemHealth();
+        }
     });
 
     async function loadBackups() {
         try {
             const b = getResults(await (await fetch('/api/v1/backups/')).json());
             document.getElementById('backups-table-body').innerHTML = b.map(i => `<tr><td>${i.id}</td><td>${new Date(i.created_at).toLocaleString()}</td><td><span class="badge bg-secondary">${i.type}</span></td><td>${i.description}</td><td><code>${i.file_path}</code></td></tr>`).join('');
-        } catch(e){}
+        } catch (e) {
+        }
     }
-    window.createBackup = async function(t) {
-        const r = await fetch('/api/v1/backups/', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrfToken }, body: JSON.stringify({ id: userId, type: t }) });
-        if(r.ok) { showToast(window.I18N.successAdd); loadBackups(); }
+
+    window.createBackup = async function (t) {
+        const r = await fetch('/api/v1/backups/', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json', 'X-CSRFToken': csrfToken},
+            body: JSON.stringify({id: userId, type: t})
+        });
+        if (r.ok) {
+            showToast(window.I18N.successAdd);
+            loadBackups();
+        }
     }
-    window.simulateImport = function(i) { if(i.files[0]) { setTimeout(()=>showToast("Імпортовано!"), 1000); i.value=""; } }
+    window.simulateImport = function (i) {
+        if (i.files[0]) {
+            setTimeout(() => showToast("Імпортовано!"), 1000);
+            i.value = "";
+        }
+    }
 
     document.getElementById('health-tab').addEventListener('click', loadSystemHealth);
     document.getElementById('users-tab').addEventListener('click', loadUsers);

@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6680613-9738-42f7-ad69-2899118eb20a" name="Changes" comment="Add admin template">
+    <list default="true" id="a6680613-9738-42f7-ad69-2899118eb20a" name="Changes" comment="Update create_system_backup">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LuxMind/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/LuxMind/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" beforeDir="false" afterPath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/operator.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/operator.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,6 +145,8 @@
       <workItem from="1778169460521" duration="8909000" />
       <workItem from="1778329527752" duration="102000" />
       <workItem from="1778510344790" duration="56000" />
+      <workItem from="1779905364772" duration="1735000" />
+      <workItem from="1779918267949" duration="1527000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit. Added models">
       <option name="closed" value="true" />
@@ -222,7 +228,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778182928782</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Update create_system_backup">
+      <option name="closed" value="true" />
+      <created>1779905403594</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1779905403594</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,7 +264,8 @@
     <MESSAGE value="Change DB connection, add auth form" />
     <MESSAGE value="Add operator template" />
     <MESSAGE value="Add admin template" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add admin template" />
+    <MESSAGE value="Update create_system_backup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update create_system_backup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

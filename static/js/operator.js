@@ -49,7 +49,9 @@ document.addEventListener("DOMContentLoaded", () => {
             dashboards.forEach(db => {
                 dashboardSelect.innerHTML += `<option value="${db.id}">${db.name}</option>`;
             });
-        } catch (error) { console.error("Error", error); }
+        } catch (error) {
+            console.error("Error", error);
+        }
     }
 
     dashboardSelect.addEventListener('change', async (e) => {
@@ -58,7 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
         lampsContainer.innerHTML = `<div class="alert alert-info">${window.I18N.selectZoneLeft}</div>`;
         outagesContainer.innerHTML = `<p class="text-muted small">${window.I18N.selectZone}</p>`;
 
-        if (!dashboardId) { zoneSelect.disabled = true; return; }
+        if (!dashboardId) {
+            zoneSelect.disabled = true;
+            return;
+        }
 
         try {
             zoneSelect.disabled = false;
@@ -67,7 +72,9 @@ document.addEventListener("DOMContentLoaded", () => {
             zones.forEach(zone => {
                 zoneSelect.innerHTML += `<option value="${zone.id}">${zone.name} (${zone.type})</option>`;
             });
-        } catch (error) { console.error("Error", error); }
+        } catch (error) {
+            console.error("Error", error);
+        }
     });
 
     zoneSelect.addEventListener('change', (e) => {
@@ -83,7 +90,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const response = await fetch(`/api/v1/lamps/?id=${zoneId}`);
             currentLamps = getResults(await response.json());
             renderLamps('all'); // Рендеримо всі при завантаженні
-        } catch (error) { console.error("Error", error); }
+        } catch (error) {
+            console.error("Error", error);
+        }
     }
 
     function renderLamps(filterType) {
@@ -143,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    window.updateBrightness = async function(lampId) {
+    window.updateBrightness = async function (lampId) {
         const newValue = document.getElementById(`range-${lampId}`).value;
         try {
             const response = await fetch(`/api/v1/lamps/${lampId}/`, {
@@ -152,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     'Content-Type': 'application/json',
                     'X-CSRFToken': csrfToken
                 },
-                body: JSON.stringify({ current_brightness: parseInt(newValue) })
+                body: JSON.stringify({current_brightness: parseInt(newValue)})
             });
 
             if (response.ok) {
@@ -184,10 +193,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         <small>${outage.description || window.I18N.outageDesc}</small>
                     </div>`;
             });
-        } catch (error) { console.error(error); }
+        } catch (error) {
+            console.error(error);
+        }
     }
 
-    window.viewSensors = async function(lampId, serialNumber) {
+    window.viewSensors = async function (lampId, serialNumber) {
         document.getElementById('modal-lamp-id').textContent = serialNumber;
         const container = document.getElementById('sensors-container');
         container.innerHTML = '<div class="spinner-border text-primary" role="status"></div>';
@@ -207,7 +218,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     ${sensor.type.toUpperCase()} <span class="badge bg-primary rounded-pill">ID: ${sensor.id}</span>
                 </li>`;
             });
-        } catch (error) { container.innerHTML = `<p class="text-danger">${window.I18N.loadError}</p>`; }
+        } catch (error) {
+            container.innerHTML = `<p class="text-danger">${window.I18N.loadError}</p>`;
+        }
     }
 
     loadDashboards();
