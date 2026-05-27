@@ -1,4 +1,6 @@
 import json
+import os
+from django.conf import settings
 from django.core import serializers
 from django.utils import timezone
 from django.db.models import Sum, F
@@ -90,13 +92,28 @@ class AdminService:
 
     @staticmethod
     def create_system_backup(id, backup_type='data'):
-        data = Lamp.objects.all()
-        file_name = f"backup_{backup_type}_{timezone.now().strftime('%Y%m%d')}.json"
+        backup_dir = os.path.join(settings.BASE_DIR, 'backups')
+        os.makedirs(backup_dir, exist_ok=True)
+        file_name = f"backup_{backup_type}_{timezone.now().strftime('%Y%m%d_%H%M%S')}.json"
+        full_file_path = os.path.join(backup_dir, file_name)
+
+        if backup_type == 'data':
+            lamps_data = Lamp.objects.all()
+
+            json_string = serializers.serialize('json', lamps_data)
+
+            with open(full_file_path, 'w', encoding='utf-8') as f:
+                f.write(json_string)
+        else:
+            with open(full_file_path, 'w', encoding='utf-8') as f:
+                import json
+                config_data = {"system_language": "uk", "auto_update": True}
+                json.dump(config_data, f, indent=4)
 
         backup = Backup.objects.create(
             account_id=id,
             type=backup_type,
-            file_path=f"/storage/backups/{file_name}",
+            file_path=f"backups/{file_name}",
             description=f"Системний бекап {backup_type}."
         )
         return backup
