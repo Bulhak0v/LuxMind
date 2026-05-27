@@ -41,17 +41,19 @@ class LightingService:
             lamp.save()
             return {"command": "SET_BRIGHTNESS", "value": 0, "reason": "Daylight detected"}
 
-        new_brightness = LightingService.calculate_adaptive_brightness(lamp, motion_level)
+        adaptive_brightness = LightingService.calculate_adaptive_brightness(lamp, motion_level)
 
-        if new_brightness > 0 and current_consumption <= 0:
+        if lamp.current_brightness not in [0, 10, 20, 40, 100]:
+            new_brightness = lamp.current_brightness
+        else:
+            new_brightness = adaptive_brightness
+
+        if new_brightness > 0 >= current_consumption:
             lamp.status = 'faulty'
-            new_brightness = 0
         else:
             lamp.status = 'active'
-
         lamp.current_brightness = new_brightness
         lamp.save()
-
         return {"command": "SET_BRIGHTNESS", "value": new_brightness}
 
     @staticmethod

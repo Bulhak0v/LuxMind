@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6680613-9738-42f7-ad69-2899118eb20a" name="Changes" comment="edit js files">
-      <change beforePath="$PROJECT_DIR$/LuxMind/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/LuxMind/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    <list default="true" id="a6680613-9738-42f7-ad69-2899118eb20a" name="Changes" comment="deployment commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +141,7 @@
       <workItem from="1778329527752" duration="102000" />
       <workItem from="1778510344790" duration="56000" />
       <workItem from="1779905364772" duration="1735000" />
-      <workItem from="1779918267949" duration="1837000" />
+      <workItem from="1779918267949" duration="4304000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit. Added models">
       <option name="closed" value="true" />
@@ -240,7 +239,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779919989650</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="deployment commit">
+      <option name="closed" value="true" />
+      <created>1779920562865</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1779920562865</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,7 +277,8 @@
     <MESSAGE value="Add admin template" />
     <MESSAGE value="Update create_system_backup" />
     <MESSAGE value="edit js files" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit js files" />
+    <MESSAGE value="deployment commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="deployment commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
