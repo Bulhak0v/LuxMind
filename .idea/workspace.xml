@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6680613-9738-42f7-ad69-2899118eb20a" name="Changes" comment="Update create_system_backup">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a6680613-9738-42f7-ad69-2899118eb20a" name="Changes" comment="edit js files">
       <change beforePath="$PROJECT_DIR$/LuxMind/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/LuxMind/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" beforeDir="false" afterPath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/operator.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/operator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +142,7 @@
       <workItem from="1778329527752" duration="102000" />
       <workItem from="1778510344790" duration="56000" />
       <workItem from="1779905364772" duration="1735000" />
-      <workItem from="1779918267949" duration="1527000" />
+      <workItem from="1779918267949" duration="1837000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit. Added models">
       <option name="closed" value="true" />
@@ -236,7 +232,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779905403594</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="edit js files">
+      <option name="closed" value="true" />
+      <created>1779919989650</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1779919989650</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,7 +269,8 @@
     <MESSAGE value="Add operator template" />
     <MESSAGE value="Add admin template" />
     <MESSAGE value="Update create_system_backup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update create_system_backup" />
+    <MESSAGE value="edit js files" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit js files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
