@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6680613-9738-42f7-ad69-2899118eb20a" name="Changes" comment="requirements.txt to UTF-8" />
+    <list default="true" id="a6680613-9738-42f7-ad69-2899118eb20a" name="Changes" comment="update vercel.json">
+      <change afterPath="$PROJECT_DIR$/locustfile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,10 +19,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="CSS File" />
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -143,7 +146,7 @@
       <workItem from="1779918267949" duration="4304000" />
       <workItem from="1779926083344" duration="707000" />
       <workItem from="1779928604469" duration="17000" />
-      <workItem from="1779930922455" duration="1277000" />
+      <workItem from="1779930922455" duration="3647000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit. Added models">
       <option name="closed" value="true" />
@@ -289,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779931602268</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="update vercel.json">
+      <option name="closed" value="true" />
+      <created>1779932893091</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1779932893091</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -324,7 +335,8 @@
     <MESSAGE value="vercel deployment setup" />
     <MESSAGE value="update build_files.sh" />
     <MESSAGE value="requirements.txt to UTF-8" />
-    <option name="LAST_COMMIT_MESSAGE" value="requirements.txt to UTF-8" />
+    <MESSAGE value="update vercel.json" />
+    <option name="LAST_COMMIT_MESSAGE" value="update vercel.json" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
