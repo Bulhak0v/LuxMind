@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6680613-9738-42f7-ad69-2899118eb20a" name="Changes" comment="vercel deployment setup" />
+    <list default="true" id="a6680613-9738-42f7-ad69-2899118eb20a" name="Changes" comment="requirements.txt to UTF-8" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -143,7 +143,7 @@
       <workItem from="1779918267949" duration="4304000" />
       <workItem from="1779926083344" duration="707000" />
       <workItem from="1779928604469" duration="17000" />
-      <workItem from="1779930922455" duration="384000" />
+      <workItem from="1779930922455" duration="1277000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit. Added models">
       <option name="closed" value="true" />
@@ -265,7 +265,31 @@
       <option name="project" value="LOCAL" />
       <updated>1779931005348</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="update build_files.sh">
+      <option name="closed" value="true" />
+      <created>1779931351497</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1779931351497</updated>
+    </task>
+    <task id="LOCAL-00017" summary="update build_files.sh">
+      <option name="closed" value="true" />
+      <created>1779931472758</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1779931472758</updated>
+    </task>
+    <task id="LOCAL-00018" summary="requirements.txt to UTF-8">
+      <option name="closed" value="true" />
+      <created>1779931602268</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1779931602268</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,7 +322,9 @@
     <MESSAGE value="deployment commit" />
     <MESSAGE value="update process_iot_telemetry" />
     <MESSAGE value="vercel deployment setup" />
-    <option name="LAST_COMMIT_MESSAGE" value="vercel deployment setup" />
+    <MESSAGE value="update build_files.sh" />
+    <MESSAGE value="requirements.txt to UTF-8" />
+    <option name="LAST_COMMIT_MESSAGE" value="requirements.txt to UTF-8" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
