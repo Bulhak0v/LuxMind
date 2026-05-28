@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6680613-9738-42f7-ad69-2899118eb20a" name="Changes" comment="deployment commit">
+    <list default="true" id="a6680613-9738-42f7-ad69-2899118eb20a" name="Changes" comment="update process_iot_telemetry">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -142,6 +142,8 @@
       <workItem from="1778510344790" duration="56000" />
       <workItem from="1779905364772" duration="1735000" />
       <workItem from="1779918267949" duration="4304000" />
+      <workItem from="1779926083344" duration="707000" />
+      <workItem from="1779928604469" duration="17000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit. Added models">
       <option name="closed" value="true" />
@@ -247,7 +249,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779920562865</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="update process_iot_telemetry">
+      <option name="closed" value="true" />
+      <created>1779926177619</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1779926177619</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,7 +288,8 @@
     <MESSAGE value="Update create_system_backup" />
     <MESSAGE value="edit js files" />
     <MESSAGE value="deployment commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="deployment commit" />
+    <MESSAGE value="update process_iot_telemetry" />
+    <option name="LAST_COMMIT_MESSAGE" value="update process_iot_telemetry" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
